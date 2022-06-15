@@ -1,0 +1,84 @@
+<header style="display: flex;justify-content: space-between;">
+  <!-- <h1 class="">Softic / Products</h1> -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+      <li class="breadcrumb-item active " aria-current="page"><a routerLink="/products">Products</a></li>
+    </ol>
+  </nav>
+  <span *ngIf="cartProduct.length>0" class="badge text-bg-info" (click)="goToPill()"> {{cartProduct.length}}</span>
+</header>
+<section class=" product">
+
+  <section class="content">
+    <ng-container *ngFor="let product of products;trackBy: trackByFn;">
+      <!-- {{product|json}} -->
+      <div class="box" [ngClass]="{'less':product.AvailablePieces<5}">
+        <div (click)="getProduct(product)" *ngIf="product.AvailablePieces<5" class="edit btn btn-primary" type="button"
+          data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+        </div>
+        <div class="card-img">
+          <picture>
+            <img src={{product.ProductImg}} />
+          </picture>
+        </div>
+        <div class="card-info">
+          <h1>
+            {{product.ProductName}}
+          </h1>
+          <strong>
+            {{product.ProductPrice}} $
+          </strong>
+          <p style="margin-left: -25px;">
+            <strong>Available </strong> <span>
+              {{product.AvailablePieces}}
+            </span>
+          </p>
+          <span class="cart-btn" (click)="bookIt(product)">Add to cart</span>
+        </div>
+
+      </div>
+    </ng-container>
+  </section>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h5 class="modal-title" id="exampleModalLabel">Udate Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form (ngSubmit)="onSubmit(productForm)" #productForm="ngForm">
+
+        <div class="modal-body">
+
+          <p>
+            <label for="Product_Name" class="col-sm-2 col-form-label">Name</label>
+            <input type="text" name="Product_Name" class="form-control" type="text" placeholder="Product Name"
+              ngModel={{selectedProduct?.ProductName}} disabled>
+          </p>
+          <p>
+            <label for="Product_Pri" class="col-sm-2 col-form-label">Price</label>
+            <input type="text" name="Product_Pri" class="form-control" type="text" placeholder="Product Price"
+              ngModel={{selectedProduct?.ProductPrice}} disabled>
+          </p>
+          <p>
+            <label for="Product_Quan" class="col-sm-2 col-form-label">Quantity</label>
+            <input type="text" name="Product_Quan" class="form-control" type="text" placeholder="Product Quantity"
+              [(ngModel)]="selectedProduct.AvailablePieces">
+          </p>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

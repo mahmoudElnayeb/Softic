@@ -1,0 +1,71 @@
+<header>
+  <!-- <h1 class="">Softic / Orders</h1> -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+      <li class="breadcrumb-item active " aria-current="page"><a routerLink="/orders">Orders</a></li>
+    </ol>
+  </nav>
+</header>
+<section class=" product container">
+  <section class="content" style="overflow: scroll;">
+    <ng-container>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Date</th>
+            <th scope="col">Payment Methos</th>
+            <th scope="col">Total Price</th>
+            <th scope="col">Info</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders$ ; let i=index">
+            <td>{{i+1}}</td>
+            <td>{{order?.user?.Name|titlecase}}</td>
+            <td>{{order?.user?.Email}}</td>
+            <td>{{order?.user?.Address|titlecase}}</td>
+            <td>{{order?.user?.Phone}}</td>
+            <td class="col-12 col-lg-2 col-md-4 col-sm-4">{{order?.OrderDate}}</td>
+            <td>{{order?.PaymentType|titlecase}}</td>
+            <td>{{order?.totalPrice|currency}}</td>
+            <td><button (click)="findOrderData(order)" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#exampleModal" style="border-radius: 50%;">
+                !
+              </button></td>
+
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+  </section>
+</section>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h5 class="modal-title" id="exampleModalLabel">Order Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-order-details [orders]="currentOrder"></app-order-details>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>

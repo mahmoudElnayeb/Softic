@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+
+@media only screen and (max-width: 480px) {
+  .breadcrumb li a {
+    font-size: medium;
+  }
+  header {
+    height: 60px;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+
+header {
+  padding: 15px 35px;
+  // background-color: rgba(33, 37, 41, 0.4);
+  background-color: rgb(234, 234, 234);
+}
+h1 {
+  font-size: 1.4rem;
+  background-color: #ff8177;
+  background-image: linear-gradient(to top, #233e65 0%, #0d6dfd 100%);
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-size: 100%;
+}
+
+ol li:first-child {
+  font-size: 1.4rem;
+  background-color: #ff8177;
+  background-image: linear-gradient(to top, #233e65 0%, #0d6dfd 100%);
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-size: 100%;
+  text-decoration: underline;
+}
+
+ol li {
+  font-size: 1.4rem;
+}

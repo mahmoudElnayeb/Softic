@@ -1,0 +1,20 @@
+strong {
+  margin: 0 20px 0 0;
+}
+
+.inf {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 20%;
+}
+.user strong {
+  margin-right: 3em;
+}
+.user span {
+  text-align: left;
+}
+
+section {
+  margin: 5px 0;
+}

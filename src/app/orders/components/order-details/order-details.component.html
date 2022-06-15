@@ -1,0 +1,89 @@
+<section>
+  <div class="card">
+    <div class="card-header"> <strong>User details</strong></div>
+    <div class="card-body">
+      <div class="user">
+        <strong> Name </strong>
+        <span> {{orders?.user?.Name}}</span>
+      </div>
+
+      <div class="user">
+        <strong> Email </strong>
+        <span> {{orders?.user?.Email }}</span>
+      </div>
+
+      <div class="user">
+        <strong> Mobile </strong>
+        <span> {{orders?.user?.Phone }}</span>
+      </div>
+
+      <div class="user">
+        <strong> Address </strong>
+        <span> {{orders?.user?.Address }}</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="card">
+    <div class="card-header"> <strong>Order details</strong></div>
+    <div class="card-body">
+      <div class="inf">
+        <strong> Order Number </strong>
+        <span> {{orders?.OrderId}}</span>
+      </div>
+
+      <div class="inf">
+        <strong> Total Price </strong>
+        <span> {{orders?.totalPrice |currency}}</span>
+      </div>
+
+      <div class="inf">
+        <strong> Payment Method </strong>
+        <span> {{orders?.PaymentType }}</span>
+      </div>
+
+      <div class="inf">
+        <strong> Date </strong>
+        <span> {{orders?.OrderDate|date:'short' }}</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="card">
+    <div class="card-header"> <strong>Product details</strong></div>
+    <div class="card-body" style="overflow: scroll;">
+      <table class="table table-light">
+        <thead class="thead-light">
+          <tr>
+            <th>#</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of orders?.Products ; let i =index">
+            <td>{{i+1}}</td>
+            <td>
+              <div style="border-radius: 5px;overflow: hidden;  width: 50px; height: 50px;"> <img src={{product.img}}
+                  alt="" srcset="" width="100%" height="100%"></div>
+            </td>
+            <td>{{product.name|titlecase}}</td>
+            <td>{{product.ProductPrice}}</td>
+            <td>{{product.Quantity}}</td>
+            <td>{{product.Quantity * product.ProductPrice}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
